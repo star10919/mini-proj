@@ -8,9 +8,7 @@ setup_requires = [
 
 
 install_requires = [
-    'django==3.2.4',      #common, crime, gasstaion과 동급인 __init__에 있는 버전으로 적어주기
-    'html5lib==1.1',
-    'wheel==0.36.2',    # 인터넷에'pip install wheel' 검색해서 버전에 맞게 넣어주기
+    'django==3.2.4'
     ]
 
 

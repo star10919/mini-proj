@@ -6,6 +6,8 @@ import pandas as pd
 import googlemaps
 from selenium import webdriver
 from icecream import ic
+import numpy as np
+from PIL import Image
 
 @dataclass
 class FileDTO(object):
@@ -44,7 +46,6 @@ class FileDTO(object):
 
 
 
-
 class PrinterBase(metaclass=ABCMeta):
     @abstractmethod
     def dframe(self):
@@ -67,6 +68,19 @@ class ReaderBase(metaclass=ABCMeta):
     @abstractmethod
     def json(self):
         pass
+
+    @abstractmethod
+    def txt(self):
+        pass
+
+    @abstractmethod
+    def img(self):
+        pass
+
+    @abstractmethod
+    def jpg(self):
+        pass
+
 
 class ScraperBase(metaclass=ABCMeta):
 
@@ -94,14 +108,27 @@ class Reader(ReaderBase):
     def csv(self, file) -> object:
         return pd.read_csv(f'{self.new_file(file)}.csv', encoding='UTF-8', thousands=',')
 
+    def csv_header(self, file, header) -> object:
+        return pd.read_csv(f'{self.new_file(file)}.csv', encoding='UTF-8', thousands=',', header=header)
+
     def xls(self, file, header, usecols) -> object:
         return pd.read_excel(f'{self.new_file(file)}.xls', header=header, usecols=usecols)
 
     def json(self, file) -> object:
-        return json.load(open(f'{self.new_file(file)}.json', encoding='UTF-8'))
+        return pd.read_json(f'{self.new_file(file)}.json', encoding='UTF-8')
+    # json.load
 
     def gmaps(self) -> object:
         return googlemaps.Client(key='')
+
+    def txt(self, file) -> object:
+        return open(f'{self.new_file(file)}.txt', encoding='UTF-8').read()
+
+    def img(self, file) -> object:
+        return np.array(Image.open(f'{self.new_file(file)}.png'))
+
+    def jpg(self, file) -> object:
+        return np.array(Image.open(f'{self.new_file(file)}.jpg'))
 
 class Scraper(ScraperBase):
 

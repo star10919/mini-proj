@@ -1,0 +1,6 @@
+djangorestframework==3.1.8
+pillow==8.2.0
+crispy-forms-gds==0.2.2
+django==3.2.4      #common, crime, gasstaion과 동급인 __init__에 있는 버전으로 적어주기
+html5lib==1.1
+wheel==0.36.2      # 인터넷에'pip install wheel' 검색해서 버전에 맞게 넣어주기
