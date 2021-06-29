@@ -1,7 +1,7 @@
 .Signup body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
-/* Full-width input fields */
+/* Full-width input fields 
 .Signup input[type=text], .Signup input[type=password] {
   width: 100%;
   padding: 15px;
@@ -10,6 +10,7 @@
   border: none;
   background: #f1f1f1;
 }
+*/
 
 .Signup input[type=text]:focus, .Signup input[type=password]:focus {
   background-color: #ddd;
