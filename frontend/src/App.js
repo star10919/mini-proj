@@ -1,7 +1,8 @@
 import React from 'react'
 import { Redirect, Route } from "react-router-dom"
-import { Login, Signup, UserDetail, UserEdit,UserList  } from 'user'
-import { Home, User, Item, Blog, Stock } from 'templates'
+import { Login, Signup, UserDetail, UserEdit, UserList } from 'user'
+import { PostWrite } from 'board'
+import { Home, User, Item, Board, Stock } from 'templates'
 import { Nav } from 'common'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -23,7 +24,14 @@ const App = () => {
         <Route exact path='/user-list' component={UserList}/>
         
         <Route exact path='/item' component={Item}/>
-        <Route exact path='/blog' component={Blog}/>
+
+        <Route exact path='/board' component={Board}/>
+        <Route exact path='/post-list' component={PostWrite}/>
+        <Route exact path='/post-register' component={PostWrite}/>
+        <Route exact path='/post-retrieve' component={PostWrite}/>
+        <Route exact path='/post-update' component={PostWrite}/>
+        
+
         <Route exact path='/stock' component={Stock}/>
     </Router>
   </div>)

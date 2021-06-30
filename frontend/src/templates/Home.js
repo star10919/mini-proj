@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 
 
 const Home = ({children}) => { 
+
     const [connection, setConnection] = useState(false)
     const handleClick = e => {
         e.preventDefault()
@@ -15,14 +16,11 @@ const Home = ({children}) => {
             setConnection(res.data.connection === 'SUCCESS')
         });
     }
-
-    
-
     return (<>
     <table className="tab_lay">
         <tr><td><h1>홈</h1></td></tr>
         <tr><td><Button color='primary' onClick={handleClick}>서버 연결 테스트</Button></td></tr>
-        <tr><td>{ localStorage.getItem("connection") === 'SUCCESS' ?
+        <tr><td>{ connection ?
         '연결상태 입니다.'
          :
         '연결상태가 아닙니다.'
@@ -31,6 +29,5 @@ const Home = ({children}) => {
     {children}
 
 </>)}
-
 
 export default Home

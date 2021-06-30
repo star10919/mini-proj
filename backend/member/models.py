@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Member(models.Model):     #상속
+class MemberVO(models.Model):     #상속,  #VO(Value Object)
     username = models.CharField(primary_key=True, max_length=10)
     password = models.CharField(max_length=10)
     name = models.TextField()
@@ -12,5 +12,5 @@ class Member(models.Model):     #상속
         managed = True
         db_table = 'members'
 
-    def _str(self):  #기계어를 자연어로 바꾸기 위함
+    def __str__(self):  #기계어를 자연어로 바꾸기 위함  (없어도됨)
         return f'[{self.pk}] {self.username}'

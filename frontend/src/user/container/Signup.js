@@ -26,8 +26,7 @@ const SignUp = () => {
   const handleSubmit = e => {
     e.preventDefault()
     alert(`전송 클릭: ${JSON.stringify({...userInfo})}`)
-    const signupRequest = {...userInfo}
-    userSignup(signupRequest)
+    userSignup({...userInfo})
     .then(res => {  //성공했을 때, 프로미스 사용
       alert(`회원가입 완료 : ${res.data.result} `)
       // history.push('login')

@@ -1,11 +1,11 @@
 from django.db import models
 
 
-class Post(models.Model):
+class PostVO(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField()
-    created_at = models.DateTimeField(auto_now= True)
-    updated_at = models.DateTimeField(auto_now= True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:   # Meta 데이터클래스랑 연동하는 클래스
         managed = True
