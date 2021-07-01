@@ -3,7 +3,7 @@ from member.models import MemberVO as member
 from icecream import ic
 
 
-class MemberSerializers(serializers.Serializer):   #rest라서 Serial해야 됨.
+class MemberSerializers(serializers.Serializer):   #rest라서 Serializer해야 됨.
     # pk인 id는 99퍼센트 수정 안 할 것이므로 read_only
     username = serializers.CharField()
     password = serializers.CharField()

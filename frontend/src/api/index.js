@@ -4,7 +4,26 @@ const SERVER = 'http://127.0.0.1:8000/'  //정규표현식 쓰려고 마지막�
 const headers = {'Content-Type' : 'application/json'}
 // const headers_xml = {'Content-Type' : 'application/xml'}      //xml 일 때 
 
-export const userSignup = body => axios.post(`${SERVER}member/signup`, {headers, body})  //headers,body 키와 밸류 값이 같아서 하나로 생략
-// export const userSignup = body => axios.post(`${SERVER}member/signup`, {heades: headers_xml, body})   //xml 일 때
-export const userLogin = body => axios.get(`${SERVER}member/login/${body.username}/`, {headers, body})  //body, post로 해야 보안토큰 걸 수 있음
-export const postWrite = body => axios.post(`${SERVER}board/postwrite`, {headers, body})
+/* Board */
+export const postDetail = body => axios.post(`${SERVER}api/post/detail`,{headers, body})  // api:모두가 볼 수 있음
+export const postDelete = body => axios.post(`${SERVER}api/post/delete`,{headers, body})
+export const postList = body => axios.post(`${SERVER}api/post/list`,{headers, body})
+export const postModify = body => axios.post(`${SERVER}api/post/modify`,{headers, body})
+export const postRegister = body => axios.post(`${SERVER}api/post/register`,{headers, body})
+export const postRetrieve = body => axios.post(`${SERVER}api/post/retrieve`,{headers, body})
+/* Common */
+/* 공통은 네이밍 컨벤션에서 벗어남 */
+/* Item */
+export const itemDetail = body => axios.post(`${SERVER}item/detail`,{headers, body})
+export const itemDelete = body => axios.post(`${SERVER}item/delete`,{headers, body})
+export const itemList = body => axios.post(`${SERVER}item/list`,{headers, body})
+export const itemModify = body => axios.post(`${SERVER}item/modify`,{headers, body})
+export const itemRegister = body => axios.post(`${SERVER}item/register`,{headers, body})
+export const itemRetrieve = body => axios.post(`${SERVER}item/retrieve`,{headers, body})
+/* Member */
+export const memberDetail = body => axios.post(`${SERVER}api/member/detail`,{headers, body})
+export const memberDelete = body => axios.delete(`${SERVER}api/member/delete`,{headers, body})
+export const memberList = () => axios.get(`${SERVER}adm/member/list`)  //get방식은 headers, body 필요없음,  admin:관리자만 볼 수 있음
+export const MemberModify = body => axios.post(`${SERVER}api/member/modify`,{headers, body})
+export const memberRegister = body => axios.post(`${SERVER}api/member/register`,{headers, body})
+export const memberLogin = body => axios.post(`${SERVER}api/member/login`,{headers, body})

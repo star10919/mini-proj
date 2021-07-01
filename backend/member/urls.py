@@ -1,12 +1,19 @@
 from django.conf.urls import url
-from django.urls import path
-from .views import Members as members  # .하나만 있으면 바로 옆(sibling 관계)
-from .views import Member as member
-from rest_framework.urlpatterns import format_suffix_patterns
+from member import views_fbv
 
-urlpatterns = [     #리액트랑 연결되는 부분
-    url('/signup', members.as_view()),
-    path('/login/<str:pk>/', member.as_view()),
+urlpatterns = [     #프로젝트urls(leehaein.urls)랑 연결되는 부분
+    url(r'^register', views_fbv.members),   #url(r'^ ~~') : 정규식 사용
+    url(r'^list', views_fbv.members)
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+'''
+CBV 방식 (Class Based View)
+from django.conf.urls import url
+from .views import Members as members
+from .views import Member as member
+from django.urls import path, include
+urlpatterns = [
+    url('/register', members.as_view()),
+    path('/<int:pk>/', member.as_view()),
+]
+'''
