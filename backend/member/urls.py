@@ -3,7 +3,9 @@ from member import views_fbv
 
 urlpatterns = [     #프로젝트urls(leehaein.urls)랑 연결되는 부분
     url(r'^register', views_fbv.members),   #url(r'^ ~~') : 정규식 사용
-    url(r'^list', views_fbv.members)
+    url(r'^list', views_fbv.members),
+    url(r'^login', views_fbv.member),
+    url(r'^modify', views_fbv.member)
 ]
 
 '''

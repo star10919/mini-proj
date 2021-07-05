@@ -6,7 +6,9 @@ from member.models import MemberVO
 from member.serializers import MemberSerializers
 from rest_framework.decorators import api_view, parser_classes
 from icecream import ic
+from django.http import HttpResponse
 from rest_framework import serializers
+import json
 
 @api_view(['GET', 'POST', 'DELETE'])
 @parser_classes([JSONParser])
@@ -29,14 +31,43 @@ def members(request):       # 전체
         serializer = MemberSerializers()
         return JsonResponse(serializer.data, safe=False)
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def member(request, pk):        # 한개, 사용안함
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def member(request):
     if request.method == 'GET':
         serializer = MemberSerializers()
         return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        data = request.data['body']
+        pk = data['username']
+        user_input_password = data['password']
+        member = MemberVO.objects.get(pk=pk)
+        if member is not None:
+            ic(member)
+            if user_input_password == member.password:
+                serializer = MemberSerializers(member, many=False)
+                ic(type(serializer.data))
+                return JsonResponse(data=serializer.data, safe=False)
+            else:
+                print('비밀번호가 다릅니다.')
+                return JsonResponse(data=[{'result':'PASSWORD-FAIL'}], status=201)
+        else:
+            print('해당 아이디가 없음')
+            return JsonResponse(data=[{'result':'USERNAME-FAIL'}], status=201)
+
+        return HttpResponse(status=104)
     elif request.method == 'PUT':
-        serializer = MemberSerializers()
-        return JsonResponse(serializer.data, safe=False)
+        data = request.data['body']
+        update_member = data['member']
+        ic(update_member)
+        pk = update_member['username']
+        member = MemberVO.objects.get(pk=pk)
+        user_change_password = update_member['password']
+        ic(user_change_password)
+        serializer = MemberSerializers(member, data= data['member'], partial=True)  #partial=True 써야 일시적X, 계속 저장됨
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse({'result':f'Update Success , {serializer.data.get("name")}'}, status=201)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         serializer = MemberSerializers()
         return JsonResponse(serializer.data, safe=False)
