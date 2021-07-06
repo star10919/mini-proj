@@ -27,4 +27,4 @@ export const memberList = () => axios.get(`${SERVER}adm/member/list`)  //get방�
 export const memberLogin = body => axios.post(`${SERVER}api/member/login`,{headers, body})
 export const memberModify = body => axios.put(`${SERVER}api/member/modify`,{headers, body})  //기존에 있는 거 수정 : put
 export const memberRegister = body => axios.post(`${SERVER}api/member/register`,{headers, body})
-// export const memberSignup
+export const memberRetrieve = name => axios.get(`${SERVER}adm/member/retrieve/${name}`)

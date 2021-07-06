@@ -1,32 +1,41 @@
 import React,{useEffect, useState} from 'react'
-import 'member/styles/MemberDetail.css'
-import { memberModify } from 'api'
+import 'member/styles/MemberModify.css'
+import { memberList, memberModify } from 'api'
+import { useHistory } from 'react-router'
+
 const MemberModifyForm = () => {
     const [changedPassword, setChangedPassword] = useState('')
+    const history = useHistory()
 
 
     const handleSubmit = e => {
       e.preventDefault()
+      if(localStorage.getItem("loginedMember") == null){  //null 값 체크
+        console.log('localStorage.getItem is null')
+      }else{
+        console.log('localStorage.getItem is not null')
+      }
       const member = JSON.parse(localStorage.getItem("loginedMember"))
-      alert(changedPassword)
+      alert(member)
       member.password = changedPassword
       alert(JSON.stringify(member))
       
       memberModify({member})
       .then(res => {
-        alert(`비밀번호 수정 완료 : ${res.data.result} `)
-        localStorage.setItem("loginedMember", res.data.result)
-        // history.push('login')
+        console.log(`비밀번호 수정 완료 : ${res.data.result} `)
+        localStorage.setItem("loginedMember", JSON.stringify(member))
+        history.push('/member-list')
         
       })
       .catch(err => {
-        alert(`비밀번호 수정 실패 : ${err} `)
+        console.log(`비밀번호 수정 실패 : ${err} `)
   
       })
     }
 
     return (<>
-    <form method="put" onSubmit={handleSubmit} >
+    <div className="modify"></div>
+    <form method="PUT" onSubmit={handleSubmit} >
             
                 <h2 style={{"text-align":"center"}}>비밀번호 수정</h2>
         <div className="container">

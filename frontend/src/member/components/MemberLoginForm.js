@@ -24,6 +24,8 @@ const MemberLoginForm = () => {
 
       }else if(res.data.result === 'USERNAME-FAIL'){
         alert(`아이디가 틀립니다.`)
+        document.getElementById("username").value = ""
+        document.getElementById("password").value = ""
       }else{
         alert(`로그인 성공`)
         localStorage.setItem("loginedMember", JSON.stringify(res.data))
@@ -49,7 +51,7 @@ const MemberLoginForm = () => {
 
     return (<>
       <h2>Login Form</h2>
-
+    <div className='Login'>
       <form onSubmit={handleSubmit} method="post" >
           <div className="imgcontainer">
             <img src="https://www.w3schools.com/howto/img_avatar2.png" style={{width: "300px"}} alt="Avatar" className="avatar"/>
@@ -73,7 +75,7 @@ const MemberLoginForm = () => {
           <span className="password">Forgot <a href="#">password?</a></span>
         </div>
       </form>
-   
+   </div>
     </>)
 }
 

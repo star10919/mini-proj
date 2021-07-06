@@ -9,6 +9,7 @@ class MemberSerializers(serializers.Serializer):   #rest라서 Serializer해야 
     password = serializers.CharField()
     name = serializers.CharField()
     email = serializers.EmailField()
+
     class Meta:
         model = member
         fields = '__all__'

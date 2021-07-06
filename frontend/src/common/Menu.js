@@ -23,10 +23,7 @@ export const MemberMenu = () => {
                     <li><Link to='/member-delete'>회원탈퇴</Link></li>
                     <li><Link to='/member-logout' onClick={() => {
                         localStorage.setItem("loginedMember","")
-                        alert('2')
-                        history.push("/home")
-                        alert('2')
-                        
+                        history.push("/home")                     
                         }}>로그아웃</Link></li>
                 </ol>
             }

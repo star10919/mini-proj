@@ -25,6 +25,7 @@ urlpatterns = [  #리액트 api랑 연결되는 부분
     url('^api/member/', include('member.urls')),
     url('^adm/member/', include('member.urls')),
 
+
 ]
 
 '''
