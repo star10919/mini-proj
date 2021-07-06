@@ -43,10 +43,10 @@ const MemberListComponent = ({ match }) => {
     .catch(err => {
         console.log(err.data)
     })
-  }, [])
+  }, [])  // []써주면 useEffect 한 번만 작용함
 
   const handleClick = member => {
-    localStorage.setItem("selectedMember", member)
+    localStorage.setItem("selectedMember", member)  // setItem 키, 밸류
   }
 
 

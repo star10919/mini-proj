@@ -51,7 +51,7 @@ const MemberLoginForm = () => {
 
     return (<>
       <h2>Login Form</h2>
-    <div className='Login'>
+    <div className='Login'>  {/** css적용 */}
       <form onSubmit={handleSubmit} method="post" >
           <div className="imgcontainer">
             <img src="https://www.w3schools.com/howto/img_avatar2.png" style={{width: "300px"}} alt="Avatar" className="avatar"/>
@@ -72,7 +72,7 @@ const MemberLoginForm = () => {
 
         <div className="container" style={{backgroundColor: "#f1f1f1"}}>
           <button type="button" className="cancelbtn">Cancel</button>
-          <span className="password">Forgot <a href="#">password?</a></span>
+          <span className="password"> Forgot <a href="#">password?</a></span>
         </div>
       </form>
    </div>

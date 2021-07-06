@@ -22,7 +22,7 @@ export const itemRegister = body => axios.post(`${SERVER}item/register`,{headers
 export const itemRetrieve = body => axios.post(`${SERVER}item/retrieve`,{headers, body})
 /* Member */
 export const memberDetail = id => axios.get(`${SERVER}api/member/detail/${id}`)
-export const memberDelete = body => axios.delete(`${SERVER}api/member/delete`,{headers, body})
+export const memberDelete = id => axios.delete(`${SERVER}api/member/delete/${id}`)
 export const memberList = () => axios.get(`${SERVER}adm/member/list`)  //get방식은 headers, body 필요없음,  admin:관리자만 볼 수 있음
 export const memberLogin = body => axios.post(`${SERVER}api/member/login`,{headers, body})
 export const memberModify = body => axios.put(`${SERVER}api/member/modify`,{headers, body})  //기존에 있는 거 수정 : put

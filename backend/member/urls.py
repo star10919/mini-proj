@@ -3,11 +3,11 @@ from member import views_fbv
 from django.urls import path
 
 urlpatterns = [     #프로젝트urls(leehaein.urls)랑 연결되는 부분
-    url(r'^register', views_fbv.members),   #url(r'^ ~~') : 정규식 사용
+    url(r'^register', views_fbv.members),   #  시스템입장에서 여러사람들이 있는데에 추가되는 거니까 members
     url(r'^list', views_fbv.members),
     url(r'^modify', views_fbv.member_modify),
     url(r'^login', views_fbv.login),
-    path('delete/<slug:pk>', views_fbv.member)
+    path('delete/<slug:pk>', views_fbv.member)  #slug:문자 / int:숫자
 ]
 
 '''

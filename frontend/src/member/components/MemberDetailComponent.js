@@ -5,9 +5,9 @@ const MemberDetailComponent = () => {
     const [member, SetMember] = useState({})
 
 
-    useEffect(() => {
+    useEffect(() => {  // return 보다 먼저 작동하게 하려고 useEffect 사용하는 것임
       SetMember(JSON.parse(localStorage.getItem("selectedMember")))   //parse : 시리얼라이저 돼있는것을 JSON으로 복구
-    }, {})
+    }, {})  //getItem 은 키
  
         
     return (<>
